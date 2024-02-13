@@ -60,7 +60,7 @@ export default function Home() {
                 return '/snowIcon.svg';
     
       default:
-        return null
+        return '';
     }
   }
   return (
