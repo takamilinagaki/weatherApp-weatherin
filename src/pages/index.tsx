@@ -13,7 +13,7 @@ export default function Home() {
   const [currentData, setCurrentData] = useState<ICurrentProps | null>(null);
   const [forecastData, setForecastData] = useState<IForecastProps[] | null>(null);
 
-  var apiKey = process.env.NEXT_PUBLIC_API;
+  var apiKey = '33a008b53b04cb2850e9a63e018ab054';
   var currentWeatherUrl = `http://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}`;
   var forecastWeatherUrl = `http://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${apiKey}`;
 
@@ -25,7 +25,11 @@ export default function Home() {
     .then((data) => {
       console.log(data);
       setCurrentData(data);
-      setCity("")
+      setCity("");
+    })
+    .catch((error) => {
+      console.log("", error);
+      setCurrentData(null)
     })
   }
 
@@ -41,8 +45,21 @@ export default function Home() {
         data.list[24],
         data.list[32],
       ]);
-      setCity("")
+      setCity("");
     })
+    .catch((error) => {
+      console.log("", error);
+      setCurrentData(null)
+    })
+  }
+
+  const handleButtonClick = () => {
+    if(!city) {
+      console.log('Enter another City or Country');
+      return;
+    }
+    GrabCurrentInfo();
+    GrabForecastInfo();
   }
 
   const weatherImage = (description: string) => {
@@ -77,11 +94,9 @@ export default function Home() {
                 placeholder="type in..."></input>
               <button
                 className={styles.submitButton}
-                onClick={() => {
-                  GrabCurrentInfo();
-                  GrabForecastInfo();
-                }}>Check the weather
+                onClick={handleButtonClick}>Check the weather
                 <Image 
+                 className={styles.arrow}
                   src={arrow}
                   alt=""/></button>
               </div>
@@ -92,7 +107,7 @@ export default function Home() {
     <div className={styles.resultSection}>  
         {currentData ? (
           <div className={styles.topSection}>
-            <div>
+            <div className={styles.topSectionTexts}>
               <h3 className={styles.resultTitle}>Weather of</h3>
                 <div className={styles.cityNameSection}>             
                    <Image 
@@ -149,7 +164,14 @@ export default function Home() {
         </div>
             )}
     </div> 
+
+    <div style={{
+      backgroundColor: '#F5F5F5',
+      paddingBottom: '50px',
+      paddingTop: '30px'
+    }}>
       <Footer />
+    </div>
     </main>
   );
 }

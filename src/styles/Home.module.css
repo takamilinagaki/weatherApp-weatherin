@@ -4,6 +4,8 @@
     height: auto;
     padding: 50px 0;
     font-family: "Rubik";
+    height: 100vh;
+    max-height: 100vh;
 }
 
 .title{
@@ -20,6 +22,7 @@
     text-align: center;
     margin-top: -10px;
 }
+
 
 .cityInput{
     width: 600px;
@@ -69,6 +72,7 @@
 
 .resultSection{
     padding: 100px 140px;
+    background-color: #F5F5F5;
 }
 
 .currentTopSection{
@@ -100,6 +104,7 @@
     flex-direction: row;
     gap: 10px;
     align-items: center;
+    margin-top: -50px;
 }
 
 .cityName{
@@ -160,8 +165,8 @@
 }
 
 .forecastWeatherSections{
-    display: flex;
-    flex-direction: row;
+    display: grid;
+    grid-template-columns: auto auto auto auto auto;
     gap: 20px;
     justify-content: center;
 }
@@ -179,7 +184,6 @@
 .forecastWeatherTitle{
     font-size: 25px;
     font-weight: 700;
-
 }
 
 .forecastWeatherImage{
@@ -209,4 +213,87 @@
     top: 200px;
     left: 150px;
     filter: blur(70px);
+}
+
+
+@media only screen and (max-width: 768px) {
+    .currentTopSection{
+        gap: 100px;
+    }
+
+    .forecastWeatherSections{
+        padding-left: 30px;
+        padding-right: 30px;
+        display: grid;
+        grid-template-columns: auto auto auto;
+    }
+
+    .forecastWeatherSection{
+        width: 180px;
+        align-self: center;
+    }
+
+    .green{
+        width: 150px;
+        height: 150px;
+    }
+
+    .pink{
+        width: 150px;
+        height: 150px;
+        position: absolute;
+        top: 100px;
+        right: 80px;
+    }
+
+    .forecastWeatherTitle{
+       margin-left: -80px;
+    }
+
+    .resultTitle{
+        margin-left: -80px;
+    }
+
+    .cityNameSection{
+        margin-left: -80px;
+    }
+}
+
+@media only screen and (max-width: 414px) {
+    .title{
+        font-size: 30px;
+    }
+    .subTitle{
+        font-size: 20px;
+    }
+
+    .cityInput{
+        width: 350px
+    }
+
+    .submitButton{
+        width: 350px;
+        font-size: 25px;
+    }
+
+    .arrow{
+        width: 30px
+    }
+
+    .currentTitle{
+       margin-right: 200px;
+    }
+
+    .currentTopSection{
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        align-items: center;
+    }
+
+    .forecastWeatherSections{
+        display: grid;
+        grid-template-columns: auto;
+    }
+
 }
