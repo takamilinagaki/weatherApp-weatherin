@@ -14,8 +14,8 @@ export default function Home() {
   const [forecastData, setForecastData] = useState<IForecastProps[] | null>(null);
 
   var apiKey = '33a008b53b04cb2850e9a63e018ab054';
-  var currentWeatherUrl = `http://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}`;
-  var forecastWeatherUrl = `http://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${apiKey}`;
+  var currentWeatherUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}`;
+  var forecastWeatherUrl = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${apiKey}`;
 
   var options: Intl.DateTimeFormatOptions = {month: 'long', day: 'numeric', year: 'numeric'}
 
