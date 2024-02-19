@@ -45,21 +45,11 @@ export default function Home() {
         data.list[24],
         data.list[32],
       ]);
-      setCity("");
     })
     .catch((error) => {
       console.log("", error);
       setCurrentData(null)
     })
-  }
-
-  const handleButtonClick = () => {
-    if(!city) {
-      console.log('Enter another City or Country');
-      return;
-    }
-    GrabCurrentInfo();
-    GrabForecastInfo();
   }
 
   const weatherImage = (description: string) => {
@@ -94,7 +84,10 @@ export default function Home() {
                 placeholder="type in..."></input>
               <button
                 className={styles.submitButton}
-                onClick={handleButtonClick}>Check the weather
+                onClick={() => {
+                  GrabCurrentInfo();
+                  GrabForecastInfo();
+                }}>Check the weather
                 <Image 
                  className={styles.arrow}
                   src={arrow}
